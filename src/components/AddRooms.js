@@ -9,21 +9,18 @@ import MenuIcon from '@material-ui/icons/Menu';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import HomeIcon from '@material-ui/icons/Home';
-import RoomIcon from '@material-ui/icons/Room';
-import VpnKeyIcon from '@material-ui/icons/VpnKey';
-import CachedIcon from '@material-ui/icons/Cached';
-import EmojiFoodBeverageIcon from '@material-ui/icons/EmojiFoodBeverage';
-import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
-import LocalLaundryServiceIcon from '@material-ui/icons/LocalLaundryService';
-import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import EmailIcon from '@material-ui/icons/Email';
+import AddIcon from '@material-ui/icons/Add';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import { Link } from 'react-router-dom';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ClearIcon from '@material-ui/icons/Clear';
 
 
-const DashBoard = () => {
+const AddRooms = () => {
     const [open, setOpen] = useState(false);
     const [sideBar, setSideBar] = useState(false);
 
@@ -58,7 +55,7 @@ const DashBoard = () => {
                             Hosterr
                         </a>
                         <div className="admin mobile-only">
-                            Student
+                            Admin
                         </div>
                         <div className="together">
                             <button className="lang" onClick={() => setOpen(true)}>
@@ -82,144 +79,143 @@ const DashBoard = () => {
                     <Left>
                         <div className="left-header">
                             <div>
-                                <DashboardIcon className="left-icon"/>
+                                <DashboardIcon className="left-icon" />
                                 Dashboard
                             </div>
                             <div className="mobile-only" onClick={() => setSideBar(true)}>
-                                <MenuIcon className="left-icon-mob"/>
+                                <MenuIcon className="left-icon-mob" />
                             </div>
                         </div>
-                        <Link to="/user/dashboard/home" className="left-item active">
-                            <HomeIcon className="left-icon"/>
+                        <Link to="/admin/dashboard/new-admin" className="left-item">
+                            <HomeIcon className="left-icon" />
                             Home
                         </Link>
-                        <Link to="/user/dashboard/room/details" className="left-item">
-                            <RoomIcon className="left-icon"/>
-                            Room details
+                        <Link to="/" className="left-item">
+                            <AssignmentIcon className="left-icon" />
+                            applications
                         </Link>
                         {/* <div className="left-item">
                             <VpnKeyIcon className="left-icon"/>
                             Change Password
                         </div> */}
-                        <Link to="/user/dashboard/room/change" className="left-item">
-                            <CachedIcon className="left-icon"/>
-                            Room Change
+                        <Link to="/admin/dashboard/hostel/add" className="left-item">
+                            <AddIcon className="left-icon" />
+                            Add Hostel
                         </Link>
-                        <Link to="/user/dashboard" className="left-item">
-                            <EmojiFoodBeverageIcon className="left-icon"/>
-                            Hostel Canteen
+                        <Link to="/admin/dashboard/room/add" className="left-item active">
+                            <AddIcon className="left-icon" />
+                            Add Rooms
                         </Link>
-                        <Link to="/user/dashboard" className="left-item">
-                            <SupervisorAccountIcon className="left-icon"/>
-                            Contact Admin
+                        <Link to="/" className="left-item">
+                            <EmailIcon className="left-icon" />
+                            Indox
                         </Link>
-                        <Link to="/user/dashboard" className="left-item">
-                            <LocalLaundryServiceIcon className="left-icon"/>
-                            Room Service
+                        <Link to="/" className="left-item">
+                            <SupervisorAccountIcon className="left-icon" />
+                            Access logs
                         </Link>
-                        <Link to="/user/dashboard" className="left-item">
-                            <MonetizationOnIcon className="left-icon"/>
-                            All Payments
-                        </Link>
-                        <Link to="/user/dashboard" className="left-item">
-                            <AccountCircleIcon className="left-icon"/>
+                        <Link to="/" className="left-item">
+                            <AccountCircleIcon className="left-icon" />
                             My profile
                         </Link>
                     </Left>
                     <Right>
                         <div className="head not-mobile">
-                            <h2>Student Dashboard</h2>
+                            <h2>Admin Dashboard</h2>
                             <div className="left-links">
                                 <p>Dashboard > Home</p>
                                 <button>
-                                    <ChatBubbleIcon className="icon"/>
-                                    Talk to Admin
+                                    <ChatBubbleIcon className="icon" />
+                                    View Inbox
                                 </button>
                             </div>
                         </div>
                         <div className="general">
-                            <div className="card">
+                            <div className="grand-card">
                                 <div className="card-top">
-                                    <p>Due Payments</p>
-                                    <MoreVertIcon className="icon"/>
+                                    <p>Add Rooms</p>
+                                    <MoreVertIcon className="icon" />
                                 </div>
-                                <div className="card-mid">
-                                    <h1>3</h1>
-                                    <p>Payments due over 4600 INR.</p>
+                                <div className="details">
+                                    <div className="two-details">
+                                        <input type="text" className="detail" placeholder="Room No."/>
+                                        {/* <input type="text" className="detail" placeholder="Existing Hostel Type"/> */}
+                                        <div className="custom-select">
+                                            <select>
+                                                <option value="0">Hostel Name</option>
+                                                <option value="1">Give hostel name 1 </option>
+                                                <option value="2">Give hostel name 2 </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <input type="number" className="detail" placeholder="No. of Students"/>
+                                    <input type="number" className="detail" placeholder="Fees per Head"/>
+                                    {/* <input type="text" className="detail" placeholder="Room No."/>
+                                    <div className="two-details">
+                                        <input type="number" className="detail" placeholder="Student per Room"/>
+                                        <input type="number" className="detail" placeholder="Fees per Month"/>
+                                    </div> */}
+                                    {/* <div className="two-details">
+                                        <input type="number" className="detail" placeholder="Room Number Start"/>
+                                        <input type="number" className="detail" placeholder="Room Number End"/>
+                                    </div> */}
+                                    {/* <textarea name="" id="" className="detail" placeholder="Reason for change"></textarea> */}
                                 </div>
-                                <div className="desc">No last date for this semester but it suggested to pay as soon as possible.
-                                <a> Pay now</a></div>
+                                <button className="submit-btn">
+                                    Add Room
+                                </button>
+                                {/* <div className="desc">*It might happen that at the time you apply for change the rooms aren't free so your request will be added to waiting list and you will get updates on hosterr dashboard regarding it's updates </div> */}
                             </div>
+                            <div className="two-cards">
                             <div className="card">
-                                <div className="card-top">
-                                    <p>Room Service</p>
-                                    <MoreVertIcon className="icon"/>
+                                    <div className="card-top">
+                                        <p>Total Rooms</p>
+                                        <MoreVertIcon className="icon"/>
+                                    </div>
+                                    <div className="card-mid">
+                                        <h1>0</h1>
+                                        <p>Rooms both genders combined</p>
+                                    </div>
+                                    <div className="desc">This data can be changed when new hostels are built.
+                                    <a> Show Room Details</a></div>
                                 </div>
-                                <div className="card-mid">
-                                    <h1>7</h1>
-                                    <p>Left for this semester</p>
+                                <div className="card">
+                                    <div className="card-top">
+                                        <p>Share Link</p>
+                                        <MoreVertIcon className="icon" />
+                                    </div>
+                                    <div className="card-mid">
+                                        <img src="https://cdn1.iconfinder.com/data/icons/web-design-and-development-50/64/110-512.png" alt="" />
+                                    </div>
+                                    <div className="desc">Ask students to join their hostel with a flex in hand, faster and easier.
+                                        <a> Share</a></div>
                                 </div>
-                                <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque.
-                                <a> Request Increase</a></div>
-                            </div>
-                            <div className="card">
-                                <div className="card-top">
-                                    <p>Room Change</p>
-                                    <MoreVertIcon className="icon"/>
-                                </div>
-                                <div className="card-mid">
-                                    <h1>1</h1>
-                                    <p>Left for this semester</p>
-                                </div>
-                                <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque.</div>
-                            </div>
-                            <div className="card">
-                                <div className="card-top">
-                                    <p>Profile Status</p>
-                                    <MoreVertIcon className="icon"/>
-                                </div>
-                                <div className="card-mid">
-                                    <h1>78</h1>
-                                    <p>Percentage of your profile is complete</p>
-                                </div>
-                                <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque.</div>
-                            </div>
-                            <div className="card">
-                                <div className="card-top">
-                                    <p>Contact Hostel Admin</p>
-                                    <MoreVertIcon className="icon"/>
-                                </div>
-                                <div className="card-mid">
-                                    <img src="https://icon-library.com/images/gmail-logo-icon/gmail-logo-icon-8.jpg" alt="" />
-                                </div>
-                                <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque. 
-                                <a> Contact Now</a></div>
                             </div>
                         </div>
+                                
                     </Right>
                 </div>
             </Container>
 
             <SideBar className={`${sideBar ? 'sidebar show-sidebar' : 'sidebar'}`}>
                 <SbComponentOne>
-                    <Link to="/user/dashboard/home">Home</Link>
-                    <Link to="/user/dashboard/room/details">Room Details</Link>
-                    <Link to="/user/dashboard/room/change">Room Change</Link>
-                    <Link to="/user/dashboard/home">Contact Admin</Link>
-                    <Link to="/user/dashboard/home">Room Service</Link>
-                    <Link to="/user/dashboard/home">All Payments</Link>
-                    <Link to="/user/dashboard/home">My profile</Link>
+                    <Link to="/admin/dashboard/new-admin">Home</Link>
+                    <Link to="/admin/dashboard/applications">Applications</Link>
+                    <Link to="/admin/dashboard/hostel/add">Add Hostel</Link>
+                    <Link to="/admin/dashboard/room/add">Add Rooms</Link>
+                    <Link to="/admin/dashboard/inbox">Inbox</Link>
+                    <Link to="/admin/dashboard/hostel/details">Hostel Details</Link>
+                    <Link to="/admin/dashboard/profile">My Profile</Link>
                 </SbComponentOne>
                 <RemoveSideBar onClick={(e) => setSideBar(false)}>
                     <ClearIcon style={{ cursor: "pointer", fontSize: '1.5rem', fill: 'white' }} />
                 </RemoveSideBar>
             </SideBar>
-
         </>
     )
 }
 
-export default DashBoard
+export default AddRooms
 
 const Container = styled.div`
     min-height: 100vh;
@@ -600,60 +596,165 @@ const Right = styled.div`
         padding-right: 0;
 
         display: flex;
-        justify-content: flex-start;
-        flex-wrap: wrap;
+        justify-content: space-between;
+        /* align-items: center; */
 
-        .card{
-            width: 32%;
-            height: 250px;
-            background-color: white;
-            margin-bottom: 10px;
-            margin-right: 1%;
-            border-radius: 10px;
-            box-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);
-            padding: 20px;
+        .grand-card{
+    position: relative;
+    height: auto;
+    width: 74%;
+    background-color: white;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);
+    border-radius: 10px;
+    margin-right: 1%;
+    padding: 1rem;
+
+    .card-top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p{
+            font-size: 1rem;
+        }
+
+        .icon{
+            cursor: pointer;
+        }
+    }
+
+    .details{
+        margin-top: 30px;
+
+        .detail{
+            border: none;
+            background-color: rgb(238, 238, 238);
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 0.8rem;
+            border: none;
+            outline: none;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+
+        .two-details{
+            display: flex;
+            justify-content: space-between;
+
+            .detail{
+                width: 49.5%;
+            }
+            
+            .custom-select{
+                width: 49.5%;
+                margin-bottom: 5px;
+                border-radius: 5px;
+                background-color: rgb(238, 238, 238);
+                display: grid;
+                place-items: center;
+                padding: 10px;
+
+                select{
+                    border: none;
+                    background-color: rgb(238, 238, 238);
+                    width: 100%;
+                    font-size: 0.8rem;
+                    border: none;
+                    outline: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        textarea{
+            width: 100%;
+            height: 200px;
+        }
+    }
+
+    .submit-btn{
+        border: none;
+        background-color: cornflowerblue;
+        color: white;
+        font-size: 0.75rem;
+        padding: 0.75rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .desc{
+        font-size: 0.6rem;
+        position: absolute;
+        bottom: 5px;
+        color: grey;
+    }
+}
+
+        .two-cards{
+            height: 520px;
+            width: 25%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            padding-right: 10px;
 
-            .card-top{
+            .card{
+                width: 100%;
+                height: 250px;
+                background-color: white;
+                box-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);
+                border-radius: 10px;
+                margin-bottom: 10px;
+                margin-right: 1%;
+                padding: 20px;
                 display: flex;
+                flex-direction: column;
                 justify-content: space-between;
-                align-items: center;
-
-                p{
-                    font-size: 1rem;
+    
+                .card-top{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+    
+                    p{
+                        font-size: 1rem;
+                    }
+    
+                    .icon{
+                        cursor: pointer;
+                    }
+    
                 }
 
-                .icon{
-                    cursor: pointer;
+                .card-mid{
+                    text-align: center;
+                    h1{
+                        color: orange;
+                        font-size: 5rem;
+                        line-height: 5rem;
+                    }
+                    p{
+                        color: orange;
+                        font-size: 0.8rem;
+                    }
+
+                    img{
+                        height: 7rem;
+                    }
                 }
 
-            }
-
-            .card-mid{
-                text-align: center;
-                h1{
-                    color: orange;
-                    font-size: 5rem;
-                    line-height: 5rem;
+                .desc{
+                    font-size: 0.7rem;
+                    color: grey;
+                    text-align: center;
                 }
-                p{
-                    color: orange;
-                    font-size: 0.8rem;
-                }
-
-                img{
-                    height: 7rem;
-                }
-            }
-
-            .desc{
-                font-size: 0.7rem;
-                color: grey;
-                text-align: center;
             }
         }
+
+
+        
     }
 
 
@@ -705,35 +806,148 @@ const Right = styled.div`
         }
 
         .general{
-            padding: 0.5rem;
+        padding: 0.6rem 0.5rem;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+
+        
+
+        .grand-card{
+    position: relative;
+    height: auto;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);
+    border-radius: 10px;
+    margin-right: 0;
+    padding: 0.8rem;
+    padding-bottom: 60px;
+
+    .card-top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p{
+            font-size: 1rem;
+        }
+
+        .icon{
+            cursor: pointer;
+        }
+    }
+
+    .details{
+        margin-top: 30px;
+
+        .detail{
+            border: none;
+            background-color: rgb(238, 238, 238);
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 0.8rem;
+            border: none;
+            outline: none;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+
+        .two-details{
             display: flex;
-            justify-content: flex-start;
-            margin: 5px 0 15px 0;
+            justify-content: space-between;
+            flex-direction: column;
+
+            .detail{
+                width: 100%;
+            }
+
+            .custom-select{
+                width: 100%;
+                margin-bottom: 5px;
+                border-radius: 5px;
+                background-color: rgb(238, 238, 238);
+                display: grid;
+                place-items: center;
+                padding: 10px;
+
+                select{
+                    border: none;
+                    background-color: rgb(238, 238, 238);
+                    width: 100%;
+                    font-size: 0.8rem;
+                    border: none;
+                    outline: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+            }
+
+        }
+
+        textarea{
+            width: 100%;
+            height: 200px;
+        }
+    }
+
+    .submit-btn{
+        border: none;
+        background-color: cornflowerblue;
+        color: white;
+        font-size: 0.75rem;
+        padding: 0.75rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .desc{
+        font-size: 0.6rem;
+        position: absolute;
+        bottom: 5px;
+        color: grey;
+        max-width: 90vw;
+    }
+}
+
+        .two-cards{
+            height: auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 0;
 
             .card{
                 width: 100%;
-                height: 270px;
-                margin-right: 0;
-                border-radius: 10px;
+                height: 250px;
+                background-color: white;
                 box-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);
+                border-radius: 10px;
+                margin-top: 10px;
+                margin-bottom: 0;
+                margin-right: 0;
                 padding: 20px;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-
+    
                 .card-top{
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-
+    
                     p{
                         font-size: 1rem;
                     }
-
+    
                     .icon{
                         cursor: pointer;
                     }
-
+    
                 }
 
                 .card-mid{
@@ -760,6 +974,7 @@ const Right = styled.div`
                 }
             }
         }
+    }
 
     }
 `

@@ -13,12 +13,15 @@ import Fade from 'react-reveal/Fade';
 import CloseIcon from '@material-ui/icons/Close';
 import MenuIcon from '@material-ui/icons/Menu';
 import ShareIcon from '@material-ui/icons/Share';
+import { Link } from 'react-router-dom';
+
 
 
 const LandingPageAdmin = () => {
     const [constFooter, setConstFooter] = useState(true);
     const [open, setOpen] = useState(false);
     const [signUp, setSignUp] = useState(true);
+
 
     return (
         <>
@@ -85,7 +88,7 @@ const LandingPageAdmin = () => {
                                 <div className="benifit mobile-only">Room customisation, on your schedule.</div>
                             </Fade>
                             <Fade bottom>
-                                <span>Hosterr provides you with the best platform to manage your hostel. <br /> 
+                                <span className="not-mobile">Hosterr provides you with the best platform to manage your hostel. <br /> 
                                     You get all the information about students related to hostel on your finger tip. <br />
                                     Get notification, if a student fails to meet your rules. <br />
                                     Easy, Fast, Managed. Hosterr.
@@ -573,6 +576,10 @@ const Title = styled.div`
     
     .benifit{
         font-weight: 200;
+
+        @media only screen and (max-width: 600px){
+            margin-top: 10px;
+        }
     }
 
     span{
@@ -1493,4 +1500,52 @@ const CustomModal = styled.div`
         border-bottom: 1px solid #ddcccc;
         padding: 0.6rem 0;
     }
+`
+
+
+
+const SideBar = styled.div`
+/* index.css */
+    position: fixed;
+`
+
+const SbComponentOne = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+        a{
+            text-decoration: none;
+            color: white;
+            border: 1px solid white;
+            padding: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15rem;
+            margin-bottom: 0.75rem;
+            width: 130%;
+            font-size: 0.95rem;
+            text-align: center;
+            
+            &:hover{
+                background-color: white;
+                color: #333;
+                transition-duration: 0.3s;
+            }
+        }
+`
+
+const JoinNow = styled.div`
+    cursor: pointer;
+    margin-top: 5rem;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+`
+
+const RemoveSideBar = styled.div`
+position: absolute;
+top: 1rem;
+right: 1rem;
 `

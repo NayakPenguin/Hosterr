@@ -15,10 +15,15 @@ import EmailIcon from '@material-ui/icons/Email';
 import AddIcon from '@material-ui/icons/Add';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
+import { Link } from 'react-router-dom';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ClearIcon from '@material-ui/icons/Clear';
 
 
 const AdminDBnew = () => {
     const [open, setOpen] = useState(false);
+    const [sideBar, setSideBar] = useState(false);
+
 
     return (
         <>
@@ -49,6 +54,9 @@ const AdminDBnew = () => {
                         <a href="/" className="title">
                             Hosterr
                         </a>
+                        <div className="admin mobile-only">
+                            Admin
+                        </div>
                         <div className="together">
                             <button className="lang" onClick={() => setOpen(true)}>
                                 <TranslateIcon className="icon-one" />
@@ -60,9 +68,6 @@ const AdminDBnew = () => {
                                     List your hostel
                                 </>
                             </div>
-                            <div className="mobile-only">
-                                <MenuIcon className="m-icon" />
-                            </div>
                         </div>
                     </div>
                     <div className="two not-mobile">
@@ -73,40 +78,49 @@ const AdminDBnew = () => {
                 <div className="main">
                     <Left>
                         <div className="left-header">
-                            <DashboardIcon className="left-icon"/>
-                            Dashboard
+                            <div>
+                                <DashboardIcon className="left-icon"/>
+                                Dashboard
+                            </div>
+                            <div className="mobile-only" onClick={() => setSideBar(true)}>
+                                <MenuIcon className="left-icon-mob"/>
+                            </div>
                         </div>
-                        <div className="left-item active">
-                            <HomeIcon className="left-icon"/>
+                        <Link to="/admin/dashboard/new-admin" className="left-item active">
+                            <HomeIcon className="left-icon" />
                             Home
-                        </div>
-                        <div className="left-item">
-                            <AssignmentIcon className="left-icon"/>
+                        </Link>
+                        <Link to="/" className="left-item">
+                            <AssignmentIcon className="left-icon" />
                             applications
-                        </div>
+                        </Link>
                         {/* <div className="left-item">
                             <VpnKeyIcon className="left-icon"/>
                             Change Password
                         </div> */}
-                        <a href="/admin/dashboard/hostel/add" className="left-item">
-                            <AddIcon className="left-icon"/>
-                            Add Hostel 
-                        </a>
-                        <div className="left-item">
-                            <EmailIcon className="left-icon"/>
+                        <Link to="/admin/dashboard/hostel/add" className="left-item">
+                            <AddIcon className="left-icon" />
+                            Add Hostel
+                        </Link>
+                        <Link to="/admin/dashboard/room/add" className="left-item">
+                            <AddIcon className="left-icon" />
+                            Add Rooms
+                        </Link>
+                        <Link to="/" className="left-item">
+                            <EmailIcon className="left-icon" />
                             Indox
-                        </div>
-                        <div className="left-item">
-                            <SupervisorAccountIcon className="left-icon"/>
+                        </Link>
+                        <Link to="/" className="left-item">
+                            <SupervisorAccountIcon className="left-icon" />
                             Access logs
-                        </div>
-                        <div className="left-item">
-                            <AccountCircleIcon className="left-icon"/>
+                        </Link>
+                        <Link to="/" className="left-item">
+                            <AccountCircleIcon className="left-icon" />
                             My profile
-                        </div>
+                        </Link>
                     </Left>
                     <Right>
-                        <div className="head">
+                        <div className="head not-mobile">
                             <h2>Admin Dashboard</h2>
                             <div className="left-links">
                                 <p>Dashboard > Home</p>
@@ -130,7 +144,7 @@ const AdminDBnew = () => {
                             </div>
                             <div className="card">
                                 <div className="card-top">
-                                    <p>Share Link</p>
+                                    <p>Invite students</p>
                                     <MoreVertIcon className="icon"/>
                                 </div>
                                 <div className="card-mid">
@@ -143,6 +157,21 @@ const AdminDBnew = () => {
                     </Right>
                 </div>
             </Container>
+
+            <SideBar className={`${sideBar ? 'sidebar show-sidebar' : 'sidebar'}`}>
+                <SbComponentOne>
+                    <Link to="/admin/dashboard/new-admin">Home</Link>
+                    <Link to="/admin/dashboard/applications">Applications</Link>
+                    <Link to="/admin/dashboard/hostel/add">Add Hostel</Link>
+                    <Link to="/admin/dashboard/room/add">Add Rooms</Link>
+                    <Link to="/admin/dashboard/inbox">Inbox</Link>
+                    <Link to="/admin/dashboard/hostel/details">Hostel Details</Link>
+                    <Link to="/admin/dashboard/profile">My Profile</Link>
+                </SbComponentOne>
+                <RemoveSideBar onClick={(e) => setSideBar(false)}>
+                    <ClearIcon style={{ cursor: "pointer", fontSize: '1.5rem', fill: 'white' }} />
+                </RemoveSideBar>
+            </SideBar>
         </>
     )
 }
@@ -160,6 +189,11 @@ const Container = styled.div`
         display: flex;
         justify-content: space-between;
         flex: 1;
+
+        @media only screen and (max-width: 600px){
+            justify-content: flex-start;
+            flex-direction: column;
+        }
     }
 
     .together{
@@ -281,6 +315,13 @@ const PageOneHeader = styled.div`
                 text-decoration: none;
             }
 
+            .admin{
+                font-size: 0.55rem;
+                margin-left: 5px;
+                text-transform: uppercase;
+                color: white;
+                letter-spacing: 0.1rem;
+            }
             
             .lang{
                 visibility: hidden;
@@ -332,6 +373,16 @@ const Left = styled.div`
         background-color: #585353;
         padding: 10px;
         margin-bottom: 25px;
+
+        div{
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            color: white;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15rem;
+        }
 
         .left-icon{
             fill: white;
@@ -385,6 +436,71 @@ const Left = styled.div`
 
     .active:hover{
         background-color: #b9aaaa69;
+    }
+
+
+
+    @media only screen and (max-width: 600px){
+        width: 100%;
+        background-color: #333;
+        display: flex;
+        flex-direction: column;
+        
+
+        .left-header{
+            font-size: 1rem;
+            padding: 10px;
+            margin-bottom: 0;
+            justify-content: space-between;
+            background-color: #5c63a9;
+
+            .left-icon{
+                fill: white;
+                margin-right: 10px;
+                font-size: 1.4rem;
+            }
+
+            .left-icon-mob{
+                fill: white;
+                font-size: 2rem;
+            }
+
+            div{
+                color: white;
+                display: flex;
+                align-items: center;
+                font-size: 1rem;
+            }
+        }
+
+        .left-item{
+            display: none;
+        }
+
+        
+        .left-item:hover{
+            background-color: #0000006b;
+            transition-duration: 250ms;
+            color: white;
+
+            .left-icon{
+                fill: white;
+            }
+        }
+
+        .active{
+            background-color: #b9aaaa69;
+            color: white;
+            
+            .left-icon{
+                fill: white;
+            }
+        }
+
+        .active:hover{
+            background-color: #b9aaaa69;
+        }
+
     }
 
 `
@@ -457,10 +573,6 @@ const Right = styled.div`
             flex-direction: column;
             justify-content: space-between;
 
-            a{
-                text-decoration: none;
-            }
-
             .card-top{
                 display: flex;
                 justify-content: space-between;
@@ -479,12 +591,12 @@ const Right = styled.div`
             .card-mid{
                 text-align: center;
                 h1{
-                    color: #cf7574;
+                    color: orange;
                     font-size: 5rem;
                     line-height: 5rem;
                 }
                 p{
-                    color: #521616;
+                    color: orange;
                     font-size: 0.8rem;
                 }
 
@@ -499,8 +611,113 @@ const Right = styled.div`
                 text-align: center;
             }
         }
+    }
 
-        
+
+
+    @media only screen and (max-width: 600px){
+        flex: 1;
+
+        .head{
+            padding: 16px 24px;
+            box-shadow: 1px 0 20px rgb(0 0 0 / 8%);
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            h2{
+                font-weight: 400;
+                font-size: 1.25rem;
+            }
+
+            .left-links{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                p{
+                    font-size: 0.8rem;
+                    color: grey;
+                    margin-right: 15px;
+                }
+
+                button{
+                    display: flex;
+                    align-items: center;
+                    padding: 5px 10px;
+                    font-size: 0.8rem;
+                    border: none;
+                    background-color: cornflowerblue;
+                    color: white;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    
+                    .icon{
+                        fill: white;
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+
+        .general{
+            padding: 0.5rem;
+            display: flex;
+            justify-content: flex-start;
+            margin: 5px 0 15px 0;
+
+            .card{
+                width: 100%;
+                height: 270px;
+                margin-right: 0;
+                border-radius: 10px;
+                box-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                .card-top{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    p{
+                        font-size: 1rem;
+                    }
+
+                    .icon{
+                        cursor: pointer;
+                    }
+
+                }
+
+                .card-mid{
+                    text-align: center;
+                    h1{
+                        color: orange;
+                        font-size: 5rem;
+                        line-height: 5rem;
+                    }
+                    p{
+                        color: orange;
+                        font-size: 0.8rem;
+                    }
+
+                    img{
+                        height: 7rem;
+                    }
+                }
+
+                .desc{
+                    font-size: 0.7rem;
+                    color: grey;
+                    text-align: center;
+                }
+            }
+        }
+
     }
 `
 
@@ -546,4 +763,53 @@ const CustomModal = styled.div`
         border-bottom: 1px solid #ddcccc;
         padding: 0.6rem 0;
     }
+`
+
+
+const SideBar = styled.div`
+/* index.css */
+    position: fixed;
+`
+
+const SbComponentOne = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+        a{
+            text-decoration: none;
+            color: white;
+            /* border: 1px solid white; */
+            background-color: #6f78c3;
+            border-radius: 5px;
+            padding: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15rem;
+            margin-bottom: 0.75rem;
+            width: 80vw;
+            font-size: 0.95rem;
+            text-align: center;
+            
+            &:hover{
+                background-color: white;
+                color: #333;
+                transition-duration: 0.3s;
+            }
+        }
+`
+
+const JoinNow = styled.div`
+    cursor: pointer;
+    margin-top: 5rem;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+`
+
+const RemoveSideBar = styled.div`
+position: absolute;
+top: 1rem;
+right: 1rem;
 `

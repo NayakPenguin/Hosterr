@@ -11,6 +11,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import AddRooms from './components/AddRooms'
 
 
 
@@ -20,12 +21,13 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/admin" element={<LandingPageAdmin/>} />
-          <Route path="/user/dashboard/home" element={<DashBoard/>} />
-          <Route path="/user/dashboard/room/details" element={<DashBoardRoomDetails/>} />
-          <Route path="/user/dashboard/room/change" element={<DashBoardRoomChange/>} />
           <Route path="/admin/dashboard" element={<AdminDB/>} />
           <Route path="/admin/dashboard/new-admin" element={<AdminDBnew/>} />
           <Route path="/admin/dashboard/hostel/add" element={<AddHostel/>} />
+          <Route path="/admin/dashboard/room/add" element={<AddRooms/>} />
+          <Route path="/user/dashboard/home" element={<DashBoard/>} />
+          <Route path="/user/dashboard/room/details" element={<DashBoardRoomDetails/>} />
+          <Route path="/user/dashboard/room/change" element={<DashBoardRoomChange/>} />
         </Routes>
       {/* <LandingPage/> */}
       {/* <LandingPageAdmin/> */}
