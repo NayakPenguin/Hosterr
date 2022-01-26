@@ -12,7 +12,12 @@ import {
   Route,
 } from "react-router-dom";
 import AddRooms from './components/AddRooms'
-
+import AddGuestRoom from './components/AddGuestRoom'
+import AddCanteen from './components/AddCanteen'
+import AdminProfile from './components/AdminProfile'
+import Inbox from './components/Inbox'
+import AccessLogs from './components/AccessLogs'
+import Applications from './components/Applications'
 
 
 const App = () => {
@@ -20,23 +25,21 @@ const App = () => {
     <div>
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/user/dashboard/home" element={<DashBoard/>} />
+          <Route path="/user/dashboard/room/details" element={<DashBoardRoomDetails/>} />
+          <Route path="/user/dashboard/room/change" element={<DashBoardRoomChange/>} />
           <Route path="/admin" element={<LandingPageAdmin/>} />
           <Route path="/admin/dashboard" element={<AdminDB/>} />
           <Route path="/admin/dashboard/new-admin" element={<AdminDBnew/>} />
           <Route path="/admin/dashboard/hostel/add" element={<AddHostel/>} />
           <Route path="/admin/dashboard/room/add" element={<AddRooms/>} />
-          <Route path="/user/dashboard/home" element={<DashBoard/>} />
-          <Route path="/user/dashboard/room/details" element={<DashBoardRoomDetails/>} />
-          <Route path="/user/dashboard/room/change" element={<DashBoardRoomChange/>} />
+          <Route path="/admin/dashboard/guest-room/add" element={<AddGuestRoom/>} />
+          <Route path="/admin/dashboard/canteen/add" element={<AddCanteen/>} />
+          <Route path="/admin/dashboard/profile" element={<AdminProfile/>} />
+          <Route path="/admin/dashboard/inbox" element={<Inbox/>} />
+          <Route path="/admin/dashboard/accesslogs" element={<AccessLogs/>} />
+          <Route path="/admin/dashboard/applications" element={<Applications/>} />
         </Routes>
-      {/* <LandingPage/> */}
-      {/* <LandingPageAdmin/> */}
-      {/* <DashBoard/> */}
-      {/* <DashBoardRoomDetails/> */}
-      {/* <DashBoardRoomChange/> */}
-      {/* <AdminDB/> */}
-      {/* <AdminDBnew/> */}
-      {/* <AddHostel/> */}
     </div>
   )
 }

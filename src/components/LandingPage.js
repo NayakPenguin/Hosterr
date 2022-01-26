@@ -13,6 +13,7 @@ import Fade from 'react-reveal/Fade';
 import CloseIcon from '@material-ui/icons/Close';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
+import ExploreIcon from '@material-ui/icons/Explore';
 
 
 
@@ -57,12 +58,12 @@ const LandingPage = () => {
                                     <TranslateIcon className="icon-one" />
                                     EN
                                 </button>
-                                <div className="btn" onClick={() => setOpen(true)}>
-                                    <AddCircleIcon className="icon" />
+                                <Link to="/admin" className="btn" onClick={() => setOpen(true)}>
+                                    <ExploreIcon className="icon" />
                                     <>
-                                        List your hostel
+                                        Explore as Admin
                                     </>
-                                </div>
+                                </Link>
                                 <div className="mobile-only">
                                     <MenuIcon className="m-icon" />
                                 </div>

@@ -90,14 +90,10 @@ const AdminDBnew = () => {
                             <HomeIcon className="left-icon" />
                             Home
                         </Link>
-                        <Link to="/" className="left-item">
+                        <Link to="/admin/dashboard/applications" className="left-item">
                             <AssignmentIcon className="left-icon" />
                             applications
                         </Link>
-                        {/* <div className="left-item">
-                            <VpnKeyIcon className="left-icon"/>
-                            Change Password
-                        </div> */}
                         <Link to="/admin/dashboard/hostel/add" className="left-item">
                             <AddIcon className="left-icon" />
                             Add Hostel
@@ -106,15 +102,23 @@ const AdminDBnew = () => {
                             <AddIcon className="left-icon" />
                             Add Rooms
                         </Link>
-                        <Link to="/" className="left-item">
+                        <Link to="/admin/dashboard/guest-room/add" className="left-item">
+                            <AddIcon className="left-icon" />
+                            Add Guest House
+                        </Link>
+                        <Link to="/admin/dashboard/canteen/add" className="left-item">
+                            <AddIcon className="left-icon" />
+                            Add Canteen
+                        </Link>
+                        <Link to="/admin/dashboard/inbox" className="left-item">
                             <EmailIcon className="left-icon" />
                             Indox
                         </Link>
-                        <Link to="/" className="left-item">
+                        <Link to="/admin/dashboard/accesslogs" className="left-item">
                             <SupervisorAccountIcon className="left-icon" />
-                            Access logs
+                            Accommodation Details
                         </Link>
-                        <Link to="/" className="left-item">
+                        <Link to="/admin/dashboard/profile" className="left-item">
                             <AccountCircleIcon className="left-icon" />
                             My profile
                         </Link>
@@ -130,30 +134,115 @@ const AdminDBnew = () => {
                                 </button>
                             </div>
                         </div>
-                        <div className="general">
-                            <div className="card">
-                                <div className="card-top">
-                                    <p>Add Hostel and Rooms</p>
-                                    <MoreVertIcon className="icon"/>
+
+                        {
+
+                            // Change to admin hostel length
+                            false ? (
+                                <div className="general">
+                                    <div className="card">
+                                        <div className="card-top">
+                                            <p>Total Rooms</p>
+                                            <MoreVertIcon className="icon"/>
+                                        </div>
+                                        <div className="card-mid">
+                                            <h1>92</h1>
+                                            <p>Rooms both genders combined</p>
+                                        </div>
+                                        <div className="desc">This data can be changed when new hostels are built.
+                                        <a> Show Room Details</a></div>
+                                    </div>
+                                    <div className="card">
+                                        <div className="card-top">
+                                            <p>Rooms Left</p>
+                                            <MoreVertIcon className="icon"/>
+                                        </div>
+                                        <div className="card-mid">
+                                            <h1>37</h1>
+                                            <p>Rooms both genders combined</p>
+                                        </div>
+                                        <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque.
+                                        <a> Show Detailed</a></div>
+                                    </div>
+                                    <div className="card">
+                                        <div className="card-top">
+                                            <p>Total Inbox</p>
+                                            <MoreVertIcon className="icon"/>
+                                        </div>
+                                        <div className="card-mid">
+                                            <h1>9</h1>
+                                            <p>Queries sent by students</p>
+                                        </div>
+                                        <div className="desc">
+                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque.
+                                            <a> Open Inbox</a>
+                                        </div>
+                                    </div>
+                                    <div className="card">
+                                        <div className="card-top">
+                                            <p>New Applications</p>
+                                            <MoreVertIcon className="icon"/>
+                                        </div>
+                                        <div className="card-mid">
+                                            <h1>12</h1>
+                                            <p>Hostel Room related applications</p>
+                                        </div>
+                                        <div className="desc">
+                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque.
+                                            <a> Open Applications</a>
+                                        </div>
+                                    </div>
+                                    <div className="card">
+                                        <div className="card-top">
+                                            <p>Add Hostel or Rooms</p>
+                                            <MoreVertIcon className="icon"/>
+                                        </div>
+                                        <div className="card-mid">
+                                            <img src="http://iess.pk//assets/images/hostle.png" alt="" />
+                                        </div>
+                                        <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque. 
+                                        <a> Append Now</a></div>
+                                    </div>
+                                    <div className="card">
+                                        <div className="card-top">
+                                            <p>Occupied Room Details</p>
+                                            <MoreVertIcon className="icon"/>
+                                        </div>
+                                        <div className="card-mid">
+                                            <img src="https://icon-library.com/images/list-icon-png/list-icon-png-27.jpg" alt="" />
+                                        </div>
+                                        <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque. 
+                                        <a> Contact Now</a></div>
+                                    </div>
                                 </div>
-                                <div className="card-mid">
-                                    <img src="http://iess.pk//assets/images/hostle.png" alt="" />
+                            ):(
+                                <div className="general">
+                                    <div className="card">
+                                        <div className="card-top">
+                                            <p>Add Hostel</p>
+                                            <MoreVertIcon className="icon"/>
+                                        </div>
+                                        <div className="card-mid">
+                                            <img src="http://iess.pk//assets/images/hostle.png" alt="" />
+                                        </div>
+                                        <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque. 
+                                        <a href="/admin/dashboard/hostel/add"> Build now</a></div>
+                                    </div>
+                                    <div className="card">
+                                        <div className="card-top">
+                                            <p>Invite students</p>
+                                            <MoreVertIcon className="icon"/>
+                                        </div>
+                                        <div className="card-mid">
+                                            <img src="https://cdn1.iconfinder.com/data/icons/web-design-and-development-50/64/110-512.png" alt="" />
+                                        </div>
+                                        <div className="desc">Ask students to join their hostel with a flex in hand, faster and easier. 
+                                        <a> Share</a></div>
+                                    </div>
                                 </div>
-                                <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque. 
-                                <a href="/admin/dashboard/hostel/add"> Build now</a></div>
-                            </div>
-                            <div className="card">
-                                <div className="card-top">
-                                    <p>Invite students</p>
-                                    <MoreVertIcon className="icon"/>
-                                </div>
-                                <div className="card-mid">
-                                    <img src="https://cdn1.iconfinder.com/data/icons/web-design-and-development-50/64/110-512.png" alt="" />
-                                </div>
-                                <div className="desc">Ask students to join their hostel with a flex in hand, faster and easier. 
-                                <a> Share</a></div>
-                            </div>
-                        </div>
+                            )
+                        }
+                        
                     </Right>
                 </div>
             </Container>
@@ -164,8 +253,10 @@ const AdminDBnew = () => {
                     <Link to="/admin/dashboard/applications">Applications</Link>
                     <Link to="/admin/dashboard/hostel/add">Add Hostel</Link>
                     <Link to="/admin/dashboard/room/add">Add Rooms</Link>
+                    <Link to="/admin/dashboard/guest-room/add">Add Guest House</Link>
+                    <Link to="/admin/dashboard/canteen/add">Add Canteen</Link>
                     <Link to="/admin/dashboard/inbox">Inbox</Link>
-                    <Link to="/admin/dashboard/hostel/details">Hostel Details</Link>
+                    <Link to="/admin/dashboard/accesslogs">Accommodation Details</Link>
                     <Link to="/admin/dashboard/profile">My Profile</Link>
                 </SbComponentOne>
                 <RemoveSideBar onClick={(e) => setSideBar(false)}>

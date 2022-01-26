@@ -18,13 +18,31 @@ import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import { Link } from 'react-router-dom';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ClearIcon from '@material-ui/icons/Clear';
-
+import axios from 'axios';
 
 const AddHostel = () => {
     const [open, setOpen] = useState(false);
     const [sideBar, setSideBar] = useState(false);
-
-
+    const [name,setName] = useState(null) ;
+    const [address,setAddress] = useState(null) ;
+    const [gender,setGender] = useState(null) ;
+    const onadd = ()=>{
+        if(gender == ""){
+            alert("Please select a Hostel Type !") ;
+            return ;
+        }
+       console.log(name,address,gender) ; 
+       axios.post('http://localhost:8000/admin/add/hostel',{
+        user:sessionStorage.getItem("id") ,
+        gender:gender,
+        name:name,
+        address:address
+       }).then(resp=>{
+          if(resp.status == 200){
+              alert("Hostel Added Succesfully !!!") ;
+          }
+       }).catch(err=>alert("An error occured !!!"))
+    }
     return (
         <>
             {
@@ -90,14 +108,10 @@ const AddHostel = () => {
                             <HomeIcon className="left-icon" />
                             Home
                         </Link>
-                        <Link to="/" className="left-item">
+                        <Link to="/admin/dashboard/applications" className="left-item">
                             <AssignmentIcon className="left-icon" />
                             applications
                         </Link>
-                        {/* <div className="left-item">
-                            <VpnKeyIcon className="left-icon"/>
-                            Change Password
-                        </div> */}
                         <Link to="/admin/dashboard/hostel/add" className="left-item active">
                             <AddIcon className="left-icon" />
                             Add Hostel
@@ -106,15 +120,23 @@ const AddHostel = () => {
                             <AddIcon className="left-icon" />
                             Add Rooms
                         </Link>
-                        <Link to="/" className="left-item">
+                        <Link to="/admin/dashboard/guest-room/add" className="left-item">
+                            <AddIcon className="left-icon" />
+                            Add Guest House
+                        </Link>
+                        <Link to="/admin/dashboard/canteen/add" className="left-item">
+                            <AddIcon className="left-icon" />
+                            Add Canteen
+                        </Link>
+                        <Link to="/admin/dashboard/inbox" className="left-item">
                             <EmailIcon className="left-icon" />
                             Indox
                         </Link>
-                        <Link to="/" className="left-item">
+                        <Link to="/admin/dashboard/accesslogs" className="left-item">
                             <SupervisorAccountIcon className="left-icon" />
-                            Access logs
+                            Accommodation Details
                         </Link>
-                        <Link to="/" className="left-item">
+                        <Link to="/admin/dashboard/profile" className="left-item">
                             <AccountCircleIcon className="left-icon" />
                             My profile
                         </Link>
@@ -138,17 +160,17 @@ const AddHostel = () => {
                                 </div>
                                 <div className="details">
                                     <div className="two-details">
-                                        <input type="text" className="detail" placeholder="Hostel Name"/>
+                                        <input type="text" className="detail" placeholder="Hostel Name" onChange={(e)=>setName(e.target.value)}/>
                                         {/* <input type="text" className="detail" placeholder="Existing Hostel Type"/> */}
                                         <div className="custom-select">
-                                            <select>
-                                                <option value="0">Hostel Type</option>
-                                                <option value="1">Male</option>
-                                                <option value="2">Female</option>
+                                            <select onChange={(e)=>setGender(e.target.value)}>
+                                                <option value="">Hostel Type</option>
+                                                <option value="Boys">Male</option>
+                                                <option value="Girls">Female</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <input type="text" className="detail" placeholder="Address"/>
+                                    <input type="text" className="detail" placeholder="Address" onChange={(e)=>setAddress(e.target.value)}/>
                                     {/* <input type="text" className="detail" placeholder="Room No."/>
                                     <div className="two-details">
                                         <input type="number" className="detail" placeholder="Student per Room"/>
@@ -160,7 +182,7 @@ const AddHostel = () => {
                                     </div> */}
                                     {/* <textarea name="" id="" className="detail" placeholder="Reason for change"></textarea> */}
                                 </div>
-                                <button className="submit-btn">
+                                <button className="submit-btn" onClick={onadd}>
                                     Add Hostel
                                 </button>
                                 {/* <div className="desc">*It might happen that at the time you apply for change the rooms aren't free so your request will be added to waiting list and you will get updates on hosterr dashboard regarding it's updates </div> */}
@@ -202,8 +224,10 @@ const AddHostel = () => {
                     <Link to="/admin/dashboard/applications">Applications</Link>
                     <Link to="/admin/dashboard/hostel/add">Add Hostel</Link>
                     <Link to="/admin/dashboard/room/add">Add Rooms</Link>
+                    <Link to="/admin/dashboard/guest-room/add">Add Guest House</Link>
+                    <Link to="/admin/dashboard/canteen/add">Add Canteen</Link>
                     <Link to="/admin/dashboard/inbox">Inbox</Link>
-                    <Link to="/admin/dashboard/hostel/details">Hostel Details</Link>
+                    <Link to="/admin/dashboard/accesslogs">Accommodation Details</Link>
                     <Link to="/admin/dashboard/profile">My Profile</Link>
                 </SbComponentOne>
                 <RemoveSideBar onClick={(e) => setSideBar(false)}>
@@ -227,23 +251,19 @@ const Container = styled.div`
         display: flex;
         justify-content: space-between;
         flex: 1;
-
         @media only screen and (max-width: 600px){
             justify-content: flex-start;
             flex-direction: column;
         }
     }
-
     .together{
         display: flex;
         align-items: center;
     }
-
     a{
         color: cornflowerblue;
         cursor: pointer;
     }
-
     .mobile-only{
         visibility: hidden;
     }
@@ -279,13 +299,11 @@ const PageOneHeader = styled.div`
             font-weight: 700;
             text-decoration: none;
         }
-
         .icon-one{
             fill: white;
             font-size: 1.2rem;
             margin-right: 6px;
         }
-
         .lang{
             display: flex;
             align-items: center;
@@ -299,7 +317,6 @@ const PageOneHeader = styled.div`
             padding: 8px 15px;
             border-radius: 15px;
         }
-
         .lang:hover{
             background-color: #a1a6dd;
             transition-duration: 250ms;
@@ -313,10 +330,8 @@ const PageOneHeader = styled.div`
             cursor: pointer;
             border-radius: 20px;
             font-weight: 500;
-
             display: flex;
             align-items: center;
-
             .icon{
                 fill: #333;
                 margin-right: 5px;
@@ -324,8 +339,6 @@ const PageOneHeader = styled.div`
             }
         }
     }
-
-
     .two{
         height: 42px;
         background-color: #f3f5f7;
@@ -333,14 +346,11 @@ const PageOneHeader = styled.div`
         align-items: center;
         justify-content: center;
         font-size: 0.7rem;
-
         border-bottom: 1px solid #ebdfdf;
-
         .two-link{
             margin-left: 5px;
         }
     }
-
     @media only screen and (max-width: 600px) {
         .one{
             height: 54px;
@@ -352,7 +362,6 @@ const PageOneHeader = styled.div`
                 font-weight: 700;
                 text-decoration: none;
             }
-
             .admin{
                 font-size: 0.55rem;
                 margin-left: 5px;
@@ -364,19 +373,15 @@ const PageOneHeader = styled.div`
             .lang{
                 visibility: hidden;
             }
-
             .btn{
                 visibility: hidden;
                 
             }
-
             .m-icon{
                 fill: white;
                 font-size: 2rem;
             }
         }
-
-
         .two{
             height: 42px;
             background-color: #f3f5f7;
@@ -384,7 +389,6 @@ const PageOneHeader = styled.div`
             align-items: center;
             justify-content: center;
             font-size: 0.7rem;
-
             .two-link{
                 margin-left: 5px;
             }
@@ -398,7 +402,6 @@ const Left = styled.div`
     background-color: #333;
     display: flex;
     flex-direction: column;
-
     .left-header{
         width: 100%;
         display: flex;
@@ -411,7 +414,6 @@ const Left = styled.div`
         background-color: #585353;
         padding: 10px;
         margin-bottom: 25px;
-
         div{
             display: flex;
             align-items: center;
@@ -421,14 +423,12 @@ const Left = styled.div`
             text-transform: uppercase;
             letter-spacing: 0.15rem;
         }
-
         .left-icon{
             fill: white;
             margin-right: 10px;
             font-size: 2rem;
         }
     }
-
     .left-item{
         display: flex;
         align-items: center;
@@ -444,25 +444,21 @@ const Left = styled.div`
         letter-spacing: 0.1rem;
         color: grey;
         text-decoration: none;
-
         .left-icon{
             fill: grey;
             font-size: 1.25rem;
             margin: -4px 10px 0 0;
         }
     }
-
     
     .left-item:hover{
         background-color: #0000006b;
         transition-duration: 250ms;
         color: white;
-
         .left-icon{
             fill: white;
         }
     }
-
     .active{
         background-color: #b9aaaa69;
         color: white;
@@ -471,38 +467,30 @@ const Left = styled.div`
             fill: white;
         }
     }
-
     .active:hover{
         background-color: #b9aaaa69;
     }
-
-
-
     @media only screen and (max-width: 600px){
         width: 100%;
         background-color: #333;
         display: flex;
         flex-direction: column;
         
-
         .left-header{
             font-size: 1rem;
             padding: 10px;
             margin-bottom: 0;
             justify-content: space-between;
             background-color: #5c63a9;
-
             .left-icon{
                 fill: white;
                 margin-right: 10px;
                 font-size: 1.4rem;
             }
-
             .left-icon-mob{
                 fill: white;
                 font-size: 2rem;
             }
-
             div{
                 color: white;
                 display: flex;
@@ -510,22 +498,18 @@ const Left = styled.div`
                 font-size: 1rem;
             }
         }
-
         .left-item{
             display: none;
         }
-
         
         .left-item:hover{
             background-color: #0000006b;
             transition-duration: 250ms;
             color: white;
-
             .left-icon{
                 fill: white;
             }
         }
-
         .active{
             background-color: #b9aaaa69;
             color: white;
@@ -534,19 +518,15 @@ const Left = styled.div`
                 fill: white;
             }
         }
-
         .active:hover{
             background-color: #b9aaaa69;
         }
-
     }
-
 `
 
 const Right = styled.div`
     flex: 1;
     background-color: #edf1f5;
-
     .head{
         padding: 16px 24px;
         box-shadow: 1px 0 20px rgb(0 0 0 / 8%);
@@ -554,23 +534,19 @@ const Right = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
-
         h2{
             font-weight: 400;
             font-size: 1.25rem;
         }
-
         .left-links{
             display: flex;
             justify-content: space-between;
             align-items: center;
-
             p{
                 font-size: 0.8rem;
                 color: grey;
                 margin-right: 15px;
             }
-
             button{
                 display: flex;
                 align-items: center;
@@ -589,15 +565,12 @@ const Right = styled.div`
             }
         }
     }
-
     .general{
         padding: 1.2rem;
         padding-right: 0;
-
         display: flex;
         justify-content: space-between;
         /* align-items: center; */
-
         .grand-card{
     position: relative;
     height: auto;
@@ -607,24 +580,19 @@ const Right = styled.div`
     border-radius: 10px;
     margin-right: 1%;
     padding: 1rem;
-
     .card-top{
         display: flex;
         justify-content: space-between;
         align-items: center;
-
         p{
             font-size: 1rem;
         }
-
         .icon{
             cursor: pointer;
         }
     }
-
     .details{
         margin-top: 30px;
-
         .detail{
             border: none;
             background-color: rgb(238, 238, 238);
@@ -636,11 +604,9 @@ const Right = styled.div`
             margin-bottom: 5px;
             border-radius: 5px;
         }
-
         .two-details{
             display: flex;
             justify-content: space-between;
-
             .detail{
                 width: 49.5%;
             }
@@ -653,7 +619,6 @@ const Right = styled.div`
                 display: grid;
                 place-items: center;
                 padding: 10px;
-
                 select{
                     border: none;
                     background-color: rgb(238, 238, 238);
@@ -666,13 +631,11 @@ const Right = styled.div`
                 }
             }
         }
-
         textarea{
             width: 100%;
             height: 200px;
         }
     }
-
     .submit-btn{
         border: none;
         background-color: cornflowerblue;
@@ -682,7 +645,6 @@ const Right = styled.div`
         border-radius: 5px;
         cursor: pointer;
     }
-
     .desc{
         font-size: 0.6rem;
         position: absolute;
@@ -690,7 +652,6 @@ const Right = styled.div`
         color: grey;
     }
 }
-
         .two-cards{
             height: 520px;
             width: 25%;
@@ -698,7 +659,6 @@ const Right = styled.div`
             flex-direction: column;
             justify-content: space-between;
             padding-right: 10px;
-
             .card{
                 width: 100%;
                 height: 250px;
@@ -726,7 +686,6 @@ const Right = styled.div`
                     }
     
                 }
-
                 .card-mid{
                     text-align: center;
                     h1{
@@ -738,12 +697,10 @@ const Right = styled.div`
                         color: orange;
                         font-size: 0.8rem;
                     }
-
                     img{
                         height: 7rem;
                     }
                 }
-
                 .desc{
                     font-size: 0.7rem;
                     color: grey;
@@ -751,16 +708,10 @@ const Right = styled.div`
                 }
             }
         }
-
-
         
     }
-
-
-
     @media only screen and (max-width: 600px){
         flex: 1;
-
         .head{
             padding: 16px 24px;
             box-shadow: 1px 0 20px rgb(0 0 0 / 8%);
@@ -768,23 +719,19 @@ const Right = styled.div`
             display: flex;
             justify-content: space-between;
             align-items: center;
-
             h2{
                 font-weight: 400;
                 font-size: 1.25rem;
             }
-
             .left-links{
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-
                 p{
                     font-size: 0.8rem;
                     color: grey;
                     margin-right: 15px;
                 }
-
                 button{
                     display: flex;
                     align-items: center;
@@ -803,17 +750,13 @@ const Right = styled.div`
                 }
             }
         }
-
         .general{
         padding: 0.6rem 0.5rem;
-
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-direction: column;
-
         
-
         .grand-card{
     position: relative;
     height: auto;
@@ -824,24 +767,19 @@ const Right = styled.div`
     margin-right: 0;
     padding: 0.8rem;
     padding-bottom: 60px;
-
     .card-top{
         display: flex;
         justify-content: space-between;
         align-items: center;
-
         p{
             font-size: 1rem;
         }
-
         .icon{
             cursor: pointer;
         }
     }
-
     .details{
         margin-top: 30px;
-
         .detail{
             border: none;
             background-color: rgb(238, 238, 238);
@@ -853,16 +791,13 @@ const Right = styled.div`
             margin-bottom: 5px;
             border-radius: 5px;
         }
-
         .two-details{
             display: flex;
             justify-content: space-between;
             flex-direction: column;
-
             .detail{
                 width: 100%;
             }
-
             .custom-select{
                 width: 100%;
                 margin-bottom: 5px;
@@ -871,7 +806,6 @@ const Right = styled.div`
                 display: grid;
                 place-items: center;
                 padding: 10px;
-
                 select{
                     border: none;
                     background-color: rgb(238, 238, 238);
@@ -883,15 +817,12 @@ const Right = styled.div`
                     cursor: pointer;
                 }
             }
-
         }
-
         textarea{
             width: 100%;
             height: 200px;
         }
     }
-
     .submit-btn{
         border: none;
         background-color: cornflowerblue;
@@ -902,7 +833,6 @@ const Right = styled.div`
         cursor: pointer;
         width: 100%;
     }
-
     .desc{
         font-size: 0.6rem;
         position: absolute;
@@ -911,7 +841,6 @@ const Right = styled.div`
         max-width: 90vw;
     }
 }
-
         .two-cards{
             height: auto;
             width: 100%;
@@ -919,7 +848,6 @@ const Right = styled.div`
             flex-direction: column;
             justify-content: space-between;
             padding: 0;
-
             .card{
                 width: 100%;
                 height: 250px;
@@ -948,7 +876,6 @@ const Right = styled.div`
                     }
     
                 }
-
                 .card-mid{
                     text-align: center;
                     h1{
@@ -960,12 +887,10 @@ const Right = styled.div`
                         color: orange;
                         font-size: 0.8rem;
                     }
-
                     img{
                         height: 7rem;
                     }
                 }
-
                 .desc{
                     font-size: 0.7rem;
                     color: grey;
@@ -974,7 +899,6 @@ const Right = styled.div`
             }
         }
     }
-
     }
 `
 
@@ -984,13 +908,11 @@ const CustomModal = styled.div`
     position: fixed;
     top: 0;
     z-index: 100;
-
     .touch-outside{
         height: 100vh;
         width: 100vw;
         background-color: #00000087;
     }    
-
     .container{
         height: auto;
         width: 50vw;
@@ -1000,7 +922,6 @@ const CustomModal = styled.div`
         top: 35vh;
         left: 25vw;
         padding: 1rem;
-
         .desc{
             font-size: 0.9rem;
             color: grey;
@@ -1011,7 +932,6 @@ const CustomModal = styled.div`
             width: 70%;
         }
     }
-
     .modalHeader{
         width: 100%;
         display: flex;
@@ -1032,7 +952,6 @@ const SbComponentOne = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-
         a{
             text-decoration: none;
             color: white;
