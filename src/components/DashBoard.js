@@ -82,19 +82,19 @@ const DashBoard = () => {
                     <Left>
                         <div className="left-header">
                             <div>
-                                <DashboardIcon className="left-icon"/>
+                                <DashboardIcon className="left-icon" />
                                 Dashboard
                             </div>
                             <div className="mobile-only" onClick={() => setSideBar(true)}>
-                                <MenuIcon className="left-icon-mob"/>
+                                <MenuIcon className="left-icon-mob" />
                             </div>
                         </div>
                         <Link to="/user/dashboard/home" className="left-item active">
-                            <HomeIcon className="left-icon"/>
+                            <HomeIcon className="left-icon" />
                             Home
                         </Link>
                         <Link to="/user/dashboard/room/details" className="left-item">
-                            <RoomIcon className="left-icon"/>
+                            <RoomIcon className="left-icon" />
                             Room details
                         </Link>
                         {/* <div className="left-item">
@@ -102,27 +102,27 @@ const DashBoard = () => {
                             Change Password
                         </div> */}
                         <Link to="/user/dashboard/room/change" className="left-item">
-                            <CachedIcon className="left-icon"/>
+                            <CachedIcon className="left-icon" />
                             Room Change
                         </Link>
                         <Link to="/user/dashboard" className="left-item">
-                            <EmojiFoodBeverageIcon className="left-icon"/>
+                            <EmojiFoodBeverageIcon className="left-icon" />
                             Hostel Canteen
                         </Link>
                         <Link to="/user/dashboard" className="left-item">
-                            <SupervisorAccountIcon className="left-icon"/>
+                            <SupervisorAccountIcon className="left-icon" />
                             Contact Admin
                         </Link>
                         <Link to="/user/dashboard" className="left-item">
-                            <LocalLaundryServiceIcon className="left-icon"/>
+                            <LocalLaundryServiceIcon className="left-icon" />
                             Room Service
                         </Link>
                         <Link to="/user/dashboard" className="left-item">
-                            <MonetizationOnIcon className="left-icon"/>
+                            <MonetizationOnIcon className="left-icon" />
                             All Payments
                         </Link>
                         <Link to="/user/dashboard" className="left-item">
-                            <AccountCircleIcon className="left-icon"/>
+                            <AccountCircleIcon className="left-icon" />
                             My profile
                         </Link>
                     </Left>
@@ -132,70 +132,129 @@ const DashBoard = () => {
                             <div className="left-links">
                                 <p>Dashboard > Home</p>
                                 <button>
-                                    <ChatBubbleIcon className="icon"/>
+                                    <ChatBubbleIcon className="icon" />
                                     Talk to Admin
                                 </button>
                             </div>
                         </div>
-                        <div className="general">
-                            <div className="card">
-                                <div className="card-top">
-                                    <p>Due Payments</p>
-                                    <MoreVertIcon className="icon"/>
+                        {
+                            true ? (
+                                <div className="general2">
+                                    <div className="grand-card">
+                                        <div className="card-top">
+                                            <p>Apply for Hostel</p>
+                                            <MoreVertIcon className="icon" />
+                                        </div>
+                                        <div className="details">
+                                            <div className="two-details">
+                                                <input type="text" className="detail" placeholder="Your Name" />
+                                                <div className="custom-select">
+                                                    <select>
+                                                        <option value="">Year of passout</option>
+                                                        <option value="21">2021</option>
+                                                        <option value="22">2022</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <input type="text" className="detail" placeholder="Gender" />
+                                            <input type="text" className="detail" placeholder="Your local address" />
+                                            <input type="text" className="detail" placeholder="Are you a physically challenged candidate ?" />
+                                        </div>
+                                        <button className="submit-btn">
+                                            Submit Request
+                                        </button>
+                                        <div className="desc">*you will get a mail and also an alert on the site on updates regarding your room, within 7 days.</div>
+                                    </div>
+                                    <div className="two-cards">
+                                        <div className="card">
+                                            <div className="card-top">
+                                                <p>Profile Status</p>
+                                                <MoreVertIcon className="icon" />
+                                            </div>
+                                            <div className="card-mid">
+                                                <h1>78</h1>
+                                                <p>Percentage of your profile is complete</p>
+                                            </div>
+                                            <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque.</div>
+                                        </div>
+                                        <div className="card">
+                                            <div className="card-top">
+                                                <p>Contact Hostel Admin</p>
+                                                <MoreVertIcon className="icon" />
+                                            </div>
+                                            <div className="card-mid">
+                                                <img src="https://icon-library.com/images/gmail-logo-icon/gmail-logo-icon-8.jpg" alt="" />
+                                            </div>
+                                            <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque.
+                                                <a> Contact Now</a></div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="card-mid">
-                                    <h1>3</h1>
-                                    <p>Payments due over 4600 INR.</p>
+                            ) : (
+                                <div className="general">
+                                    <div className="card">
+                                        <div className="card-top">
+                                            <p>Due Payments</p>
+                                            <MoreVertIcon className="icon" />
+                                        </div>
+                                        <div className="card-mid">
+                                            <h1>3</h1>
+                                            <p>Payments due over 4600 INR.</p>
+                                        </div>
+                                        <div className="desc">No last date for this semester but it suggested to pay as soon as possible.
+                                            <a> Pay now</a></div>
+                                    </div>
+                                    <div className="card">
+                                        <div className="card-top">
+                                            <p>Room Service</p>
+                                            <MoreVertIcon className="icon" />
+                                        </div>
+                                        <div className="card-mid">
+                                            <h1>7</h1>
+                                            <p>Left for this semester</p>
+                                        </div>
+                                        <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque.
+                                            <a> Request Increase</a></div>
+                                    </div>
+                                    <div className="card">
+                                        <div className="card-top">
+                                            <p>Room Change</p>
+                                            <MoreVertIcon className="icon" />
+                                        </div>
+                                        <div className="card-mid">
+                                            <h1>1</h1>
+                                            <p>Left for this semester</p>
+                                        </div>
+                                        <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque.</div>
+                                    </div>
+                                    <div className="card">
+                                        <div className="card-top">
+                                            <p>Profile Status</p>
+                                            <MoreVertIcon className="icon" />
+                                        </div>
+                                        <div className="card-mid">
+                                            <h1>78</h1>
+                                            <p>Percentage of your profile is complete</p>
+                                        </div>
+                                        <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque.</div>
+                                    </div>
+                                    <div className="card">
+                                        <div className="card-top">
+                                            <p>Contact Hostel Admin</p>
+                                            <MoreVertIcon className="icon" />
+                                        </div>
+                                        <div className="card-mid">
+                                            <img src="https://icon-library.com/images/gmail-logo-icon/gmail-logo-icon-8.jpg" alt="" />
+                                        </div>
+                                        <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque.
+                                            <a> Contact Now</a></div>
+                                    </div>
                                 </div>
-                                <div className="desc">No last date for this semester but it suggested to pay as soon as possible.
-                                <a> Pay now</a></div>
-                            </div>
-                            <div className="card">
-                                <div className="card-top">
-                                    <p>Room Service</p>
-                                    <MoreVertIcon className="icon"/>
-                                </div>
-                                <div className="card-mid">
-                                    <h1>7</h1>
-                                    <p>Left for this semester</p>
-                                </div>
-                                <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque.
-                                <a> Request Increase</a></div>
-                            </div>
-                            <div className="card">
-                                <div className="card-top">
-                                    <p>Room Change</p>
-                                    <MoreVertIcon className="icon"/>
-                                </div>
-                                <div className="card-mid">
-                                    <h1>1</h1>
-                                    <p>Left for this semester</p>
-                                </div>
-                                <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque.</div>
-                            </div>
-                            <div className="card">
-                                <div className="card-top">
-                                    <p>Profile Status</p>
-                                    <MoreVertIcon className="icon"/>
-                                </div>
-                                <div className="card-mid">
-                                    <h1>78</h1>
-                                    <p>Percentage of your profile is complete</p>
-                                </div>
-                                <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque.</div>
-                            </div>
-                            <div className="card">
-                                <div className="card-top">
-                                    <p>Contact Hostel Admin</p>
-                                    <MoreVertIcon className="icon"/>
-                                </div>
-                                <div className="card-mid">
-                                    <img src="https://icon-library.com/images/gmail-logo-icon/gmail-logo-icon-8.jpg" alt="" />
-                                </div>
-                                <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque. 
-                                <a> Contact Now</a></div>
-                            </div>
-                        </div>
+
+                            )
+                            // code
+                        }
+
                     </Right>
                 </div>
             </Container>
@@ -656,6 +715,172 @@ const Right = styled.div`
         }
     }
 
+    .general2{
+        padding: 1.2rem;
+        padding-right: 0;
+
+        display: flex;
+        justify-content: space-between;
+        /* align-items: center; */
+
+        .grand-card{
+    position: relative;
+    height: 512px;
+    width: 74%;
+    background-color: white;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);
+    border-radius: 10px;
+    margin-right: 1%;
+    padding: 1rem;
+
+    .card-top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p{
+            font-size: 1rem;
+        }
+
+        .icon{
+            cursor: pointer;
+        }
+    }
+
+    .details{
+        margin-top: 30px;
+
+        .detail{
+            border: none;
+            background-color: rgb(238, 238, 238);
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 0.8rem;
+            border: none;
+            outline: none;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+
+        .two-details{
+            display: flex;
+            justify-content: space-between;
+
+            .detail{
+                width: 49.5%;
+            }
+
+        }
+
+        .custom-select{
+                width: 49.5%;
+                margin-bottom: 5px;
+                border-radius: 5px;
+                background-color: rgb(238, 238, 238);
+                display: grid;
+                place-items: center;
+                padding: 10px;
+                select{
+                    border: none;
+                    background-color: rgb(238, 238, 238);
+                    width: 100%;
+                    font-size: 0.8rem;
+                    border: none;
+                    outline: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+            }
+
+        textarea{
+            width: 100%;
+            height: 200px;
+        }
+    }
+
+    .submit-btn{
+        border: none;
+        background-color: cornflowerblue;
+        color: white;
+        font-size: 0.75rem;
+        padding: 0.75rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .desc{
+        font-size: 0.6rem;
+        position: absolute;
+        bottom: 5px;
+        color: grey;
+    }
+}
+
+        .two-cards{
+            height: 520px;
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-right: 10px;
+
+            .card{
+                width: 100%;
+                height: 250px;
+                background-color: white;
+                box-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);
+                border-radius: 10px;
+                margin-bottom: 10px;
+                margin-right: 1%;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+    
+                .card-top{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+    
+                    p{
+                        font-size: 1rem;
+                    }
+    
+                    .icon{
+                        cursor: pointer;
+                    }
+    
+                }
+
+                .card-mid{
+                    text-align: center;
+                    h1{
+                        color: orange;
+                        font-size: 5rem;
+                        line-height: 5rem;
+                    }
+                    p{
+                        color: orange;
+                        font-size: 0.8rem;
+                    }
+
+                    img{
+                        height: 7rem;
+                    }
+                }
+
+                .desc{
+                    font-size: 0.7rem;
+                    color: grey;
+                    text-align: center;
+                }
+            }
+        }
+
+
+        
+    }
+
 
 
     @media only screen and (max-width: 600px){
@@ -760,6 +985,179 @@ const Right = styled.div`
                 }
             }
         }
+
+
+        .general2{
+        padding: 0.6rem 0.5rem;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+
+        
+
+        .grand-card{
+    position: relative;
+    height: auto;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);
+    border-radius: 10px;
+    margin-right: 0;
+    padding: 0.8rem;
+    padding-bottom: 60px;
+
+    .card-top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p{
+            font-size: 1rem;
+        }
+
+        .icon{
+            cursor: pointer;
+        }
+    }
+
+    .details{
+        margin-top: 30px;
+
+
+        .detail{
+            border: none;
+            background-color: rgb(238, 238, 238);
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 0.8rem;
+            border: none;
+            outline: none;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+
+        .two-details{
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+
+            .detail{
+                width: 100%;
+
+            }
+
+        }
+
+        .custom-select{
+                width: 100%;
+                margin-bottom: 5px;
+                border-radius: 5px;
+                background-color: rgb(238, 238, 238);
+                display: grid;
+                place-items: center;
+                padding: 10px;
+                select{
+                    border: none;
+                    background-color: rgb(238, 238, 238);
+                    width: 100%;
+                    font-size: 0.8rem;
+                    border: none;
+                    outline: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+            }
+
+        textarea{
+            width: 100%;
+            height: 200px;
+        }
+    }
+
+    .submit-btn{
+        border: none;
+        background-color: cornflowerblue;
+        color: white;
+        font-size: 0.75rem;
+        padding: 0.75rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .desc{
+        font-size: 0.6rem;
+        position: absolute;
+        bottom: 5px;
+        color: grey;
+        max-width: 90vw;
+    }
+}
+
+        .two-cards{
+            height: auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 0;
+
+            .card{
+                width: 100%;
+                height: 250px;
+                background-color: white;
+                box-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);
+                border-radius: 10px;
+                margin-top: 10px;
+                margin-bottom: 0;
+                margin-right: 0;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+    
+                .card-top{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+    
+                    p{
+                        font-size: 1rem;
+                    }
+    
+                    .icon{
+                        cursor: pointer;
+                    }
+    
+                }
+
+                .card-mid{
+                    text-align: center;
+                    h1{
+                        color: orange;
+                        font-size: 5rem;
+                        line-height: 5rem;
+                    }
+                    p{
+                        color: orange;
+                        font-size: 0.8rem;
+                    }
+
+                    img{
+                        height: 7rem;
+                    }
+                }
+
+                .desc{
+                    font-size: 0.7rem;
+                    color: grey;
+                    text-align: center;
+                }
+            }
+        }
+    }
 
     }
 `

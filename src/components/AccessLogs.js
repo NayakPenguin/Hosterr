@@ -24,6 +24,7 @@ import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 const AccessLogs = () => {
     const [open, setOpen] = useState(false);
     const [sideBar, setSideBar] = useState(false);
+    const [showAccomodation, setShowAccomodation] = useState(false);
 
     return (
         <>
@@ -134,58 +135,116 @@ const AccessLogs = () => {
                                 </button>
                             </div>
                         </div>
+
+                        {/* code */}
                         <div className="general">
-                            <div className="grand-card">
-                                <div className="card-top">
-                                    <p>Accomodation Details</p>
-                                    <MoreVertIcon className="icon" />
-                                </div>
-                                <div className="details">
-                                    <div className="detail detail-header">
-                                        <div className="room-no">Room No.</div>
-                                        <div className="hostel-name">Hostel Name</div>
-                                        <div className="gender">Gender</div>
-                                        <div className="fees">Fees</div>
-                                        <div className="resident">Residents</div>
+                            {
+                                showAccomodation? (
+                                    <div className="grand-card">
+                                        <div className="card-top">
+                                            <a onClick={() => setShowAccomodation(false)}>
+                                                <ArrowBackIosIcon className="icon-link" />
+                                                <>
+                                                    All Accomodations
+                                                </>
+                                            </a>
+                                            <MoreVertIcon className="icon" />
+                                        </div>
+                                        <div className="details2">
+                                            <div className="detail">
+                                                <p className="cat">1. Room No. :</p>
+                                                <p className="res"> 19</p>
+                                            </div>
+                                            <div className="detail">
+                                                <p className="cat">2. Hostel Name :</p>
+                                                <p className="res"> random name</p>
+                                            </div>
+                                            <div className="detail">
+                                                <p className="cat">3. Gender : </p>
+                                                <p className="res">Male</p>
+                                            </div>
+                                            <div className="detail">
+                                                <p className="cat">4. Residents :</p>
+                                                <a href="/" className="res">Candidate1, Candidate2, Candidate3</a>
+                                            </div>
+                                            <div className="detail">
+                                                <p className="cat">6. Fees Pending : </p>
+                                                <p className="res">Yes</p>
+                                            </div>
+                                            <div className="detail">
+                                                <p className="cat">6. Graduation Year : </p>
+                                                <p className="res">UG3</p>
+                                            </div>
+                                            <div className="detail">
+                                                <p className="cat">7. Hostel Type : </p>
+                                                <p className="res"> Write here</p>
+                                            </div>
+                                            <div className="detail">
+                                                <p className="cat">8. Complaints : </p>
+                                                <p className="res"> None</p>
+                                            </div>
+                                        </div>
+                                        <div className="btns-new">
+                                            <button className="btn">Message All</button>
+                                            <button className="btn red-bg">Edit Details</button>
+                                        </div>
+                                        <div className="desc">*You can click on the names of the students to visit their profiles.</div>
                                     </div>
-                                    <div className="detail">
-                                        <div className="room-no">32</div>
-                                        <div className="hostel-name">Block 5 - Engg Dept</div>
-                                        <div className="gender">Female</div>
-                                        <div className="fees">Given</div>
-                                        <a href="/" className="resident">
-                                            <>View Profile</>
-                                        <OpenInNewIcon className="icon"/></a>
+                                ):(
+                                    <div className="grand-card">
+                                        <div className="card-top">
+                                            <p>Accomodation Details</p>
+                                            <MoreVertIcon className="icon" />
+                                        </div>
+                                        <div className="details">
+                                            <div className="detail detail-header">
+                                                <div className="room-no">Room No.</div>
+                                                <div className="hostel-name">Hostel Name</div>
+                                                <div className="gender">Gender</div>
+                                                <div className="fees">Fees</div>
+                                                <div className="resident">Residents</div>
+                                            </div>
+                                            <div className="detail">
+                                                <div className="room-no">32</div>
+                                                <div className="hostel-name">Block 5 - Engg Dept</div>
+                                                <div className="gender">Female</div>
+                                                <div className="fees">Given</div>
+                                                <a className="resident"  onClick={() => setShowAccomodation(true)}>
+                                                    <>View Profile</>
+                                                <OpenInNewIcon className="icon"/></a>
+                                            </div>
+                                            <div className="detail">
+                                                <div className="room-no">7</div>
+                                                <div className="hostel-name">Jamini Roy - Arts Dept</div>
+                                                <div className="gender">Male</div>
+                                                <div className="fees">Pending</div>
+                                                <a className="resident"  onClick={() => setShowAccomodation(true)}>
+                                                    <>View Profile</>
+                                                <OpenInNewIcon className="icon"/></a>
+                                            </div>
+                                            <div className="detail">
+                                                <div className="room-no">32</div>
+                                                <div className="hostel-name">Block 5 - Engg Dept</div>
+                                                <div className="gender">Female</div>
+                                                <div className="fees">Given</div>
+                                                <a className="resident"  onClick={() => setShowAccomodation(true)}>
+                                                    <>View Profile</>
+                                                <OpenInNewIcon className="icon"/></a>
+                                            </div>
+                                            <div className="detail">
+                                                <div className="room-no">7</div>
+                                                <div className="hostel-name">Jamini Roy - Arts Dept</div>
+                                                <div className="gender">Male</div>
+                                                <div className="fees">Pending</div>
+                                                <a className="resident"  onClick={() => setShowAccomodation(true)}>
+                                                    <>View Profile</>
+                                                <OpenInNewIcon className="icon"/></a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="detail">
-                                        <div className="room-no">7</div>
-                                        <div className="hostel-name">Jamini Roy - Arts Dept</div>
-                                        <div className="gender">Male</div>
-                                        <div className="fees">Pending</div>
-                                        <a href="/" className="resident">
-                                            <>View Profile</>
-                                        <OpenInNewIcon className="icon"/></a>
-                                    </div>
-                                    <div className="detail">
-                                        <div className="room-no">32</div>
-                                        <div className="hostel-name">Block 5 - Engg Dept</div>
-                                        <div className="gender">Female</div>
-                                        <div className="fees">Given</div>
-                                        <a href="/" className="resident">
-                                            <>View Profile</>
-                                        <OpenInNewIcon className="icon"/></a>
-                                    </div>
-                                    <div className="detail">
-                                        <div className="room-no">7</div>
-                                        <div className="hostel-name">Jamini Roy - Arts Dept</div>
-                                        <div className="gender">Male</div>
-                                        <div className="fees">Pending</div>
-                                        <a href="/" className="resident">
-                                            <>View Profile</>
-                                        <OpenInNewIcon className="icon"/></a>
-                                    </div>
-                                </div>
-                            </div>
+
+                                )
+                            }
                             <div className="two-cards">
                                 <div className="card">
                                     <div className="card-top">
@@ -588,6 +647,15 @@ const Right = styled.div`
         .icon{
             cursor: pointer;
         }
+        a{
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            
+            .icon-link{
+                font-size: 1.2rem;
+            }
+        }
     }
     .details{
         margin-top: 30px;
@@ -711,6 +779,52 @@ const Right = styled.div`
             height: 200px;
         }
     }
+
+    .btns-new{
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            
+            .btn{
+                padding: 8px 10px;
+                cursor: pointer;
+                border-radius: 5px;
+                margin-right: 5px;
+                border: none;
+                font-size: 0.8rem;
+                background-color: #7690bf;
+                color: white;
+            }
+
+            .red-bg{
+                background-color: #d16969;
+            }
+        }
+
+    .details2{
+        margin-top: 30px;
+
+        .detail{
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+
+            .cat{
+                font-weight: 600;
+            }
+
+            .res{
+                font-weight: 200;
+                margin-left: 10px;
+                font-size: 0.85rem;
+            }
+        }
+
+        
+    }
+
+
     .submit-btn{
         border: none;
         background-color: cornflowerblue;
@@ -721,7 +835,7 @@ const Right = styled.div`
         cursor: pointer;
     }
     .desc{
-        font-size: 0.6rem;
+        font-size: 0.7rem;
         position: absolute;
         bottom: 5px;
         color: grey;

@@ -18,6 +18,7 @@ import AdminProfile from './components/AdminProfile'
 import Inbox from './components/Inbox'
 import AccessLogs from './components/AccessLogs'
 import Applications from './components/Applications'
+import UserProfile from './components/UserProfile'
 
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/user/dashboard/home" element={<DashBoard/>} />
           <Route path="/user/dashboard/room/details" element={<DashBoardRoomDetails/>} />
           <Route path="/user/dashboard/room/change" element={<DashBoardRoomChange/>} />
+          <Route path="/user/dashboard/profile" element={<UserProfile/>} />
           <Route path="/admin" element={<LandingPageAdmin/>} />
           <Route path="/admin/dashboard" element={<AdminDB/>} />
           <Route path="/admin/dashboard/new-admin" element={<AdminDBnew/>} />
