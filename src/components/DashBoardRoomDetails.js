@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useState } from 'react';
 import Fade from 'react-reveal/Fade';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import AirlineSeatIndividualSuiteIcon from '@material-ui/icons/AirlineSeatIndividualSuite';
 import TranslateIcon from '@material-ui/icons/Translate';
 import CloseIcon from '@material-ui/icons/Close';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -96,31 +97,23 @@ const DashBoardRoomDetails = () => {
                             <RoomIcon className="left-icon" />
                             Room details
                         </Link>
-                        {/* <div className="left-item">
-                            <VpnKeyIcon className="left-icon"/>
-                            Change Password
-                        </div> */}
                         <Link to="/user/dashboard/room/change" className="left-item">
                             <CachedIcon className="left-icon" />
                             Room Change
                         </Link>
-                        <Link to="/user/dashboard" className="left-item">
+                        <Link to="/user/dashboard/canteen" className="left-item">
                             <EmojiFoodBeverageIcon className="left-icon" />
                             Hostel Canteen
                         </Link>
-                        <Link to="/user/dashboard" className="left-item">
+                        <Link to="/user/dashboard/guest-house/req" className="left-item">
+                            <AirlineSeatIndividualSuiteIcon className="left-icon" />
+                            Guest House
+                        </Link>
+                        <Link to="/user/dashboard/contact-admin" className="left-item">
                             <SupervisorAccountIcon className="left-icon" />
                             Contact Admin
                         </Link>
-                        <Link to="/user/dashboard" className="left-item">
-                            <LocalLaundryServiceIcon className="left-icon" />
-                            Room Service
-                        </Link>
-                        <Link to="/user/dashboard" className="left-item">
-                            <MonetizationOnIcon className="left-icon" />
-                            All Payments
-                        </Link>
-                        <Link to="/user/dashboard" className="left-item">
+                        <Link to="/user/dashboard/profile" className="left-item">
                             <AccountCircleIcon className="left-icon" />
                             My profile
                         </Link>
@@ -230,10 +223,10 @@ const DashBoardRoomDetails = () => {
                     <Link to="/user/dashboard/home">Home</Link>
                     <Link to="/user/dashboard/room/details">Room Details</Link>
                     <Link to="/user/dashboard/room/change">Room Change</Link>
-                    <Link to="/user/dashboard/home">Contact Admin</Link>
-                    <Link to="/user/dashboard/home">Room Service</Link>
-                    <Link to="/user/dashboard/home">All Payments</Link>
-                    <Link to="/user/dashboard/home">My profile</Link>
+                    <Link to="/user/dashboard/contact-admin">Contact Admin</Link>
+                    <Link to="/user/dashboard/canteen">Canteen</Link>
+                    <Link to="/user/dashboard/guest-house/req">Guest House</Link>
+                    <Link to="/user/dashboard/profile">My profile</Link>
                 </SbComponentOne>
                 <RemoveSideBar onClick={(e) => setSideBar(false)}>
                     <ClearIcon style={{ cursor: "pointer", fontSize: '1.5rem', fill: 'white' }} />

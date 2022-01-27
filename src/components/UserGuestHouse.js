@@ -21,11 +21,10 @@ import { Link } from 'react-router-dom';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ClearIcon from '@material-ui/icons/Clear';
 import AirlineSeatIndividualSuiteIcon from '@material-ui/icons/AirlineSeatIndividualSuite';
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 
 
-
-
-const UserProfile = () => {
+const UserGuestHouse = () => {
     const [open, setOpen] = useState(false);
     const [sideBar, setSideBar] = useState(false);
 
@@ -54,7 +53,7 @@ const UserProfile = () => {
                 )
             }
             <Container>
-                <PageOneHeader>
+            <PageOneHeader>
                     <div className="one">
                         <a href="/" className="title">
                             Hosterr
@@ -107,7 +106,7 @@ const UserProfile = () => {
                             <EmojiFoodBeverageIcon className="left-icon" />
                             Hostel Canteen
                         </Link>
-                        <Link to="/user/dashboard/guest-house/req" className="left-item">
+                        <Link to="/user/dashboard/guest-house/req" className="left-item active">
                             <AirlineSeatIndividualSuiteIcon className="left-icon" />
                             Guest House
                         </Link>
@@ -115,7 +114,7 @@ const UserProfile = () => {
                             <SupervisorAccountIcon className="left-icon" />
                             Contact Admin
                         </Link>
-                        <Link to="/user/dashboard/profile" className="left-item active">
+                        <Link to="/user/dashboard/profile" className="left-item">
                             <AccountCircleIcon className="left-icon" />
                             My profile
                         </Link>
@@ -124,56 +123,66 @@ const UserProfile = () => {
                         <div className="head not-mobile">
                             <h2>Student Dashboard</h2>
                             <div className="left-links">
-                                <p>Dashboard > Room Change</p>
+                                <p>Dashboard > Home</p>
                                 <button>
-                                    <AddCircleIcon className="icon" />
-                                    Create New
+                                    <ChatBubbleIcon className="icon" />
+                                    Talk to Admin
                                 </button>
                             </div>
                         </div>
                         <div className="general">
                             <div className="grand-card">
                                 <div className="card-top">
-                                    <p>Complete your profile</p>
+                                    <p>Book Guest House</p>
                                     <MoreVertIcon className="icon" />
                                 </div>
                                 <div className="details">
+                                    <input type="text" className="detail" placeholder="Reserve by name - main lodger"/>
                                     <div className="two-details">
-                                        <input type="text" className="detail" placeholder="Year of Study" />
-                                        <input type="text" className="detail" placeholder="Gender" />
+                                        {/* <input type="text" className="detail" placeholder="Room No."/> */}
+                                        <div className="time-select">
+                                            <p>Opening Time</p>
+                                            <input className="taketime" type="date"/>
+                                        </div>
+                                        <div className="time-select">
+                                            <p>Closing Time</p>
+                                            <input className="taketime" type="date"/>
+                                        </div>
                                     </div>
-                                    <input type="text" className="detail" placeholder="Roll no." />
+                                    <div className="error">*Click on the <b>calender symbol</b> for easy filling.</div>
+                                    <input type="number" className="detail" placeholder="Main lodger Contact Number"/>
                                 </div>
                                 <button className="submit-btn">
-                                    Confirm
+                                    Book Guest House
                                 </button>
                                 {/* <div className="desc">*It might happen that at the time you apply for change the rooms aren't free so your request will be added to waiting list and you will get updates on hosterr dashboard regarding it's updates </div> */}
                             </div>
                             <div className="two-cards">
-                                <div className="card">
-                                    <div className="card-top">
-                                        <p>Profile Status</p>
-                                        <MoreVertIcon className="icon" />
+                            <div className="card">
+                                        <div className="card-top">
+                                            <p>Profile Status</p>
+                                            <MoreVertIcon className="icon" />
+                                        </div>
+                                        <div className="card-mid">
+                                            <h1>78</h1>
+                                            <p>Percentage of your profile is complete</p>
+                                        </div>
+                                        <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque.</div>
                                     </div>
-                                    <div className="card-mid">
-                                        <h1>78</h1>
-                                        <p>Percentage of your profile is complete</p>
+                                    <div className="card">
+                                        <div className="card-top">
+                                            <p>Contact Hostel Admin</p>
+                                            <MoreVertIcon className="icon" />
+                                        </div>
+                                        <div className="card-mid">
+                                            <img src="https://icon-library.com/images/gmail-logo-icon/gmail-logo-icon-8.jpg" alt="" />
+                                        </div>
+                                        <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque.
+                                            <a> Contact Now</a></div>
                                     </div>
-                                    <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque.</div>
-                                </div>
-                                <div className="card">
-                                    <div className="card-top">
-                                        <p>Contact Hostel Admin</p>
-                                        <MoreVertIcon className="icon" />
-                                    </div>
-                                    <div className="card-mid">
-                                        <img src="https://icon-library.com/images/gmail-logo-icon/gmail-logo-icon-8.jpg" alt="" />
-                                    </div>
-                                    <div className="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, atque.
-                                        <a> Contact Now</a></div>
-                                </div>
                             </div>
                         </div>
+                                
                     </Right>
                 </div>
             </Container>
@@ -196,7 +205,7 @@ const UserProfile = () => {
     )
 }
 
-export default UserProfile
+export default UserGuestHouse
 
 const Container = styled.div`
     min-height: 100vh;
@@ -204,6 +213,12 @@ const Container = styled.div`
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+
+    .error{
+        font-size: 0.7rem;
+        margin: 0 0 10px 2px;
+        color: black;
+    }
     
     .main{
         display: flex;
@@ -582,7 +597,7 @@ const Right = styled.div`
 
         .grand-card{
     position: relative;
-    height: 512px;
+    height: auto;
     width: 74%;
     background-color: white;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1);
@@ -627,6 +642,58 @@ const Right = styled.div`
                 width: 49.5%;
             }
 
+            .time-select{
+                width: 49.5%;
+                margin-bottom: 5px;
+                border-radius: 5px;
+                background-color: rgb(238, 238, 238);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px;
+
+                p{
+                    padding: 5px;
+                    font-size: 0.7rem;
+                    color: black;
+                }
+
+                .taketime{
+                        width: 50%;
+                        font-size: 0.8rem;
+                        background-color: #e1d7d7;
+                        border: none;
+                        outline: none;
+                        display: flex;
+                        padding: 5px 10px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    }
+            }
+
+            
+            .custom-select{
+                width: 49.5%;
+                margin-bottom: 5px;
+                border-radius: 5px;
+                background-color: rgb(238, 238, 238);
+                display: grid;
+                place-items: center;
+                padding: 10px;
+
+                
+
+                select{
+                    border: none;
+                    background-color: rgb(238, 238, 238);
+                    width: 100%;
+                    font-size: 0.8rem;
+                    border: none;
+                    outline: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+            }
         }
 
         textarea{
@@ -819,9 +886,35 @@ const Right = styled.div`
         .two-details{
             display: flex;
             justify-content: space-between;
+            flex-direction: column;
 
             .detail{
-                width: 49.5%;
+                width: 100%;
+            }
+
+            .time-select{
+                width: 100%;
+            }
+
+            .custom-select{
+                width: 100%;
+                margin-bottom: 5px;
+                border-radius: 5px;
+                background-color: rgb(238, 238, 238);
+                display: grid;
+                place-items: center;
+                padding: 10px;
+
+                select{
+                    border: none;
+                    background-color: rgb(238, 238, 238);
+                    width: 100%;
+                    font-size: 0.8rem;
+                    border: none;
+                    outline: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
             }
 
         }
