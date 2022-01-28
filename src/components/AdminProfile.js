@@ -177,6 +177,9 @@ const AdminProfile = () => {
                                 <button className="submit-btn">
                                     Confirm Changes
                                 </button>
+                                <button className="submit-btn red">
+                                    Sign Out
+                                </button>
                                 {/* <div className="desc">*It might happen that at the time you apply for change the rooms aren't free so your request will be added to waiting list and you will get updates on hosterr dashboard regarding it's updates </div> */}
                             </div>
                             <div className="two-cards">
@@ -728,6 +731,11 @@ const Right = styled.div`
         padding: 0.75rem 1rem;
         border-radius: 5px;
         cursor: pointer;
+        margin-right: 5px;
+    }
+
+    .red{
+        background-color: #c16565;
     }
 
     .desc{

@@ -22,6 +22,9 @@ import UserProfile from './components/UserProfile'
 import UserCanteen from './components/UserCanteen'
 import UserGuestHouse from './components/UserGuestHouse'
 import UserContactAdmin from './components/UserContactAdmin'
+import PaymentGateway from './components/PaymentGateway'
+import PaymentSuccess from './components/PaymentSuccess'
+import GetProfile from './components/GetProfile'
 
 
 const App = () => {
@@ -36,6 +39,13 @@ const App = () => {
           <Route path="/user/dashboard/canteen" element={<UserCanteen/>} />
           <Route path="/user/dashboard/guest-house/req" element={<UserGuestHouse/>} />
           <Route path="/user/dashboard/contact-admin" element={<UserContactAdmin/>} />
+
+          {/* ----------------- N E W  S T A R T --------------- */}
+          <Route path="/payment-gateway" element={<PaymentGateway/>} />
+          <Route path="/payment-gateway/success" element={<PaymentSuccess/>} />
+          <Route path="/get-profile" element={<GetProfile/>} />
+          {/* ----------------- N E W  E N D --------------- */}
+
 
           <Route path="/admin" element={<LandingPageAdmin/>} />
           <Route path="/admin/dashboard" element={<AdminDB/>} />
