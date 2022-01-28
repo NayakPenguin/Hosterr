@@ -25,6 +25,8 @@ import UserContactAdmin from './components/UserContactAdmin'
 import PaymentGateway from './components/PaymentGateway'
 import PaymentSuccess from './components/PaymentSuccess'
 import GetProfile from './components/GetProfile'
+import StripeApi from './components/StripeApi'
+import StripeApp from './StripeApp'
 
 
 const App = () => {
@@ -44,6 +46,8 @@ const App = () => {
           <Route path="/payment-gateway" element={<PaymentGateway/>} />
           <Route path="/payment-gateway/success" element={<PaymentSuccess/>} />
           <Route path="/get-profile" element={<GetProfile/>} />
+          {/* <Route path="/stripe" element={<StripeApi/>} /> */}
+          <Route path="/payment" element={<StripeApp/>} />
           {/* ----------------- N E W  E N D --------------- */}
 
 

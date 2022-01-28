@@ -14,13 +14,14 @@ import CloseIcon from '@material-ui/icons/Close';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
 import ExploreIcon from '@material-ui/icons/Explore';
-
-
+import ClearIcon from '@material-ui/icons/Clear';
+import logo from './logo.png'
 
 const LandingPage = () => {
     const [constFooter, setConstFooter] = useState(true);
     const [open, setOpen] = useState(false);
     const [signUp, setSignUp] = useState(true);
+    const [showChat, setShowChat] = useState(false);
 
     return (
         <>
@@ -45,6 +46,33 @@ const LandingPage = () => {
                     <></>
                 )
             }
+
+            {/* code */}
+            {
+                showChat ? (
+                    <ChatContainer>
+                        <div className="top">
+                            <div className="tgher">
+                                <img src={logo} alt="" />
+                                <h1>Hosterr</h1>
+                            </div>
+                            <ClearIcon className="icon" onClick={() => setShowChat(false)}/>
+                        </div>
+                        <div className="powered-by">
+                            Hosterr Services, powered by Dialogflow.
+                        </div>
+                        <iframe width="350" height="430" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/96b4e058-f359-41ce-b76c-d7e50eeb442b"></iframe>
+                    </ChatContainer>
+                ):(
+                    <ChatInitaiter onClick={() => setShowChat(true)}>
+                            <img src="https://www.jing.fm/clipimg/full/120-1205146_chat-icon-png-image-circle.png" alt="" />
+                    </ChatInitaiter>
+                )
+            }
+
+
+
+
             <Container>
             {/* <iframe width="350" height="430" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/96b4e058-f359-41ce-b76c-d7e50eeb442b"></iframe> */}
 
@@ -1521,5 +1549,91 @@ const CustomModal = styled.div`
         align-items: center;
         border-bottom: 1px solid #ddcccc;
         padding: 0.6rem 0;
+    }
+`
+
+
+const ChatContainer = styled.div`
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    height: 70vh;
+    width: 360px;
+    background-color: white;
+    border: 1px solid #ddcccc;
+    border-radius: 20px;
+    z-index: 10;
+    overflow: hidden;
+
+    iframe{
+        height: 100%;
+        width: 100%;
+        border: none;
+    }
+
+    .top{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 80px;
+        background-color: #1c2e4e;
+        z-index: 11;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 3px 10px;
+
+        .tgher{
+            display: flex;
+            align-items: center;
+
+            img{
+                height: 2.6rem;
+            }
+        }
+
+        h1{
+            font-size: 1.8rem;
+            color: #b1c6dd;
+        }
+
+        .icon{
+            fill: white;
+            font-size: 1.75rem;
+            cursor: pointer;
+        }
+    }
+
+    .powered-by{
+        position: absolute;
+        top: 80px;
+        width: 100%;
+        height: 30px;
+        background-color: #fff3f3;
+        z-index: 11;
+        font-size: 0.7rem;
+        padding: calc(15px - 0.35rem);
+        color: grey;
+    }
+`
+
+const ChatInitaiter = styled.div`
+    height: 60px;
+    width: 60px;
+    position: fixed;
+    bottom: 70px;
+    right: 10px;
+    border-radius: 50%;
+    background-color: #f6f6f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    z-index: 100;
+    
+    img{
+        height: 50%;
+        cursor: pointer;
     }
 `
